@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  // window.dancers = [];
 
   $(".search").keypress(function(event) {
     if(event.which === 13) {
@@ -15,6 +14,7 @@ $(document).ready(function(){
       } else {
         search($(this).val());
       }
+
       $(this).val('');
 
       return false;
@@ -42,10 +42,10 @@ $(document).ready(function(){
     while(dancers.length > 0) {
       addDancer(dancers.pop());
     }
+
     $(".dancer_img").on('click', function(event){
       $(this).stop(true,true).hide('explode', { pieces: 128 } , 1000);
       $(this).remove();
-
     });
   };
 
@@ -59,9 +59,6 @@ $(document).ready(function(){
       dancer.width
     );
     $('body').append(dancer.$node);
-    // window.dancers.push(dancer);
   };
-
-
 });
 

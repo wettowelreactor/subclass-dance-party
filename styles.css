@@ -9,7 +9,7 @@ body{
 body, a:link, a:visited, a:active{
   color: lightblue;
 }
-.title, .addDancerButton, .lineupButton{
+.title{
   padding:5px 12px;
   float:right;
 }
@@ -23,14 +23,7 @@ body, a:link, a:visited, a:active{
   height: 50px;
   text-align: center;
 }
-.title{
-  background-color: #777;
-}
-.dancer{
-  border:10px solid red;
-  border-radius:10px;
-  position:absolute;
-}
+
 .destroyer{
   background-image: url('des.gif');
   position: absolute;
@@ -39,7 +32,4 @@ body, a:link, a:visited, a:active{
   background-size: 180px;
   z-index:1000;
   background-repeat: no-repeat;
-}
-.even{
-  transform: scaleX(-1);
 }
