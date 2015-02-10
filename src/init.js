@@ -1,9 +1,22 @@
 $(document).ready(function(){
-  window.dancers = [];
+  // window.dancers = [];
 
   $(".search").keypress(function(event) {
     if(event.which === 13) {
-      search($(this).val());
+      if($(this).val() === 'clear'){
+        $('.dancer_img').remove();
+      } else if ($(this).val() === 'party pooper') {
+        var dancer = new DestroyerDancer(
+          $("body").height() * Math.random(),
+          $("body").width() * Math.random(),
+          Math.random() * 1000
+        );
+        $('body').append(dancer.$node);
+      } else {
+        search($(this).val());
+      }
+      $(this).val('');
+
       return false;
     }
   });
@@ -29,6 +42,11 @@ $(document).ready(function(){
     while(dancers.length > 0) {
       addDancer(dancers.pop());
     }
+    $(".dancer_img").on('click', function(event){
+      $(this).stop(true,true).hide('explode', { pieces: 128 } , 1000);
+      $(this).remove();
+
+    });
   };
 
   var addDancer = function(dancer) {
@@ -41,62 +59,9 @@ $(document).ready(function(){
       dancer.width
     );
     $('body').append(dancer.$node);
-    window.dancers.push(dancer);
+    // window.dancers.push(dancer);
   };
 
 
-  $(".lineupButtonOLD").on('click', function(event) {
-    for (var i = 0; i < window.dancers.length; i += 1) {
-      window.dancers[i].togglePause();
-      window.dancers[i].$node.animate(
-        {top: (i*20)+100, left: (i*50)+100},
-        1000,
-        'swing',
-        Dancer.prototype.togglePause.bind(window.dancers[i]));
-    }
-  });
-
-  $(".lineupButton").on('click', function(event) {
-    for (var i = 0; i < window.dancers.length; i += 1) {
-      window.dancers[i].togglePause();
-      if(i % 2 === 0) {
-        window.dancers[i].$node.addClass('even');
-      }
-      window.dancers[i].$node.animate(
-        {top: (i*30)+100,
-        left: (i*100)+20},
-        1000,
-        'swing',
-        Dancer.prototype.togglePause.bind(window.dancers[i]));
-    }
-  });
-  $(".addDancerButton").on("click", function(event){
-    /* This function sets up the click handlers for the create-dancer
-     * buttons on index.html. You should only need to make one small change to it.
-     * As long as the "data-dancer-maker-function-name" attribute of a
-     * class="addDancerButton" DOM node matches one of the names of the
-     * maker functions available in the global scope, clicking that node
-     * will call the function to make the dancer.
-     */
-
-    /* dancerMakerFunctionName is a string which must match
-     * one of the dancer maker functions available in global scope.
-     * A new object of the given type will be created and added
-     * to the stage.
-     */
-    var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
-    // get the maker function for the kind of dancer we're supposed to make
-    var dancerMakerFunction = window[dancerMakerFunctionName];
-
-    // make a dancer with a random position
-
-    var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
-      Math.random() * 1000
-    );
-    $('body').append(dancer.$node);
-    window.dancers.push(dancer);
-  });
 });
 

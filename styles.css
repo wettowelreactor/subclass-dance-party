@@ -17,6 +17,12 @@ body, a:link, a:visited, a:active{
   height:32px;
   background-color: #555;
 }
+.search{
+  width: 100%;
+  font-size: 2em;
+  height: 50px;
+  text-align: center;
+}
 .title{
   background-color: #777;
 }

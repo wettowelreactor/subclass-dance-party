@@ -18,11 +18,27 @@ GifDancer.prototype.step = function(){
   // other effects you can use on a jQuery-wrapped html tag.
   // 5-10
 
-  debugger;
   curTop = parseInt(this.$node[0].style.top.replace('px', ''));
   curLeft = parseInt(this.$node[0].style.left.replace('px', ''));
+
+  var maxWidth = $("body").width();
+  var maxHeight = $("body").height();
+  var minHeight = 50;
+  var minWidth = 0;
   var newTop =  curTop + ( 20-(40*Math.random()) );
   var newLeft = curLeft + ( 20-(40*Math.random()) );
+  if(newTop > maxHeight){
+    newTop = maxHeight-100;
+  }
+  if(newTop < minHeight){
+    newTop = minHeight;
+  }
+  if(newLeft > maxWidth){
+    newLeft = maxWidth-50;
+  }
+  if(newLeft < minWidth){
+    newLeft = minWidth;
+  }
   this.$node.animate(
         {top: newTop,
         left: newLeft},
