@@ -1,12 +1,26 @@
 $(document).ready(function(){
   window.dancers = [];
 
-  $(".lineupButton").on('click', function(event) {
+  $(".lineupButtonOLD").on('click', function(event) {
     for (var i = 0; i < window.dancers.length; i += 1) {
       window.dancers[i].togglePause();
       window.dancers[i].$node.animate(
-        {top: (i*20)+100,
-        left: (i*50)+100},
+        {top: (i*20)+100, left: (i*50)+100},
+        1000,
+        'swing',
+        Dancer.prototype.togglePause.bind(window.dancers[i]));
+    }
+  });
+
+  $(".lineupButton").on('click', function(event) {
+    for (var i = 0; i < window.dancers.length; i += 1) {
+      window.dancers[i].togglePause();
+      if(i % 2 === 0) {
+        window.dancers[i].$node.addClass('even');
+      }
+      window.dancers[i].$node.animate(
+        {top: (i*30)+100,
+        left: (i*100)+20},
         1000,
         'swing',
         Dancer.prototype.togglePause.bind(window.dancers[i]));
