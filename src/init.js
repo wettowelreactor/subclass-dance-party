@@ -9,26 +9,30 @@ $(document).ready(function(){
 
   var search = function(val) {
     val = val.replace('party', '').trim();
-    var imgUrls = [];
+    var imgs = [];
+    var img;
     $.ajax({
         url: 'http://api.giphy.com/v1/stickers/search?q=' + val + '&limit=100&api_key=dc6zaTOxFJmzC'
     }).then(function(data) {
         for (var i = 0; i < data.data.length; i += 1) {
-          imgUrls.push(data.data[i].images.fixed_height_small.url)
+          img = {};
+          img.url = data.data[i].images.fixed_height_small.url;
+          img.height = data.data[i].images.fixed_height_small.height;
+          img.width = data.data[i].images.fixed_height_small.width;
+          imgs.push(img);
         }
-        console.log(imgUrls);
-        addDancers(imgUrls);
+        addDancers(imgs);
     });
   };
 
-  var addDancers = function(data) {
-    while(data.length > 0) {
-      addDancer(data.pop());
+  var addDancers = function(dancers) {
+    while(dancers.length > 0) {
+      addDancer(dancers.pop());
     }
   };
 
-  var addDancer = function(imgUrl) {
-    TODO
+  var addDancer = function(dancer) {
+    console.log(dancer);
   };
 
   window.dancers = [];
