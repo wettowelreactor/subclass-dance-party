@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  window.dancers = [];
 
   $(".search").keypress(function(event) {
     if(event.which === 13) {
@@ -8,11 +9,10 @@ $(document).ready(function(){
   });
 
   var search = function(val) {
-    val = val.replace('party', '').trim();
     var imgs = [];
     var img;
     $.ajax({
-        url: 'http://api.giphy.com/v1/stickers/search?q=' + val + '&limit=100&api_key=dc6zaTOxFJmzC'
+        url: 'http://api.giphy.com/v1/stickers/search?q=' + encodeURIComponent(val) + '&limit=100&api_key=dc6zaTOxFJmzC'
     }).then(function(data) {
         for (var i = 0; i < data.data.length; i += 1) {
           img = {};
@@ -32,10 +32,18 @@ $(document).ready(function(){
   };
 
   var addDancer = function(dancer) {
-    console.log(dancer);
+    var dancer = new GifDancer(
+      $("body").height() * Math.random(),
+      $("body").width() * Math.random(),
+      Math.random() * 1000,
+      dancer.url,
+      dancer.height,
+      dancer.width
+    );
+    $('body').append(dancer.$node);
+    window.dancers.push(dancer);
   };
 
-  window.dancers = [];
 
   $(".lineupButtonOLD").on('click', function(event) {
     for (var i = 0; i < window.dancers.length; i += 1) {

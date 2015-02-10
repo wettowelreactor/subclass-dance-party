@@ -15,7 +15,6 @@ describe("colorDancer", function() {
 
   it("should have a step function that makes it change colors", function() {
     // sinon.spy(colorDancer.$node, 'toggle');
-    debugger;
     var oldCSS = colorDancer.$node[0].style.borderColor;
     colorDancer.step();
     var newCSS = colorDancer.$node[0].style.borderColor;
