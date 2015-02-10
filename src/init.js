@@ -17,12 +17,18 @@ $(document).ready(function(){
           imgUrls.push(data.data[i].images.fixed_height_small.url)
         }
         console.log(imgUrls);
-        return imgUrls;
+        addDancers(imgUrls);
     });
   };
 
   var addDancers = function(data) {
+    while(data.length > 0) {
+      addDancer(data.pop());
+    }
+  };
 
+  var addDancer = function(imgUrl) {
+    TODO
   };
 
   window.dancers = [];
