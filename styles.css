@@ -31,12 +31,13 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
-.dancer_img2{
-  background-image: url('dance1.gif');
+.destroyer{
+  background-image: url('des.gif');
   position: absolute;
-  width: 180px;
-  height: 217.5px;
+  width: 500px;
+  height: 325px;
   background-size: 180px;
+  z-index:1000;
   background-repeat: no-repeat;
 }
 .even{
