@@ -1,4 +1,30 @@
 $(document).ready(function(){
+
+  $(".search").keypress(function(event) {
+    if(event.which === 13) {
+      search($(this).val());
+      return false;
+    }
+  });
+
+  var search = function(val) {
+    val = val.replace('party', '').trim();
+    var imgUrls = [];
+    $.ajax({
+        url: 'http://api.giphy.com/v1/stickers/search?q=' + val + '&limit=100&api_key=dc6zaTOxFJmzC'
+    }).then(function(data) {
+        for (var i = 0; i < data.data.length; i += 1) {
+          imgUrls.push(data.data[i].images.fixed_height_small.url)
+        }
+        console.log(imgUrls);
+        return imgUrls;
+    });
+  };
+
+  var addDancers = function(data) {
+
+  };
+
   window.dancers = [];
 
   $(".lineupButtonOLD").on('click', function(event) {
