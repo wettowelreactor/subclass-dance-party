@@ -21,7 +21,7 @@ DestroyerDancer.prototype.step = function(){
       'swing',
       function(){
         $($('.dancer_img')[0]).stop(true,true).hide('explode', { pieces: 128 } , 1000);
-        $(('.dancer_img')[0]).addClass('queueDelete');
+        $($('.dancer_img')[0]).addClass('queueDelete');
         $($('.dancer_img')[0]).remove();
       }
     );

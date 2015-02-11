@@ -46,6 +46,7 @@ $(document).ready(function(){
 
     $(".dancer_img").on('click', function(event){
       $(this).stop(true,true).hide('explode', { pieces: 128 } , 1000);
+      $(this).addClass('queueDelete');
       $(this).remove();
     });
   };
