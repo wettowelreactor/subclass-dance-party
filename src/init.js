@@ -3,6 +3,7 @@ $(document).ready(function(){
   $(".search").keypress(function(event) {
     if(event.which === 13) {
       if($(this).val() === 'clear'){
+        $('.dancer_img').addClass('queueDelete');
         $('.dancer_img').remove();
       } else if ($(this).val() === 'party pooper') {
         var dancer = new DestroyerDancer(

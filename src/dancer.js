@@ -9,11 +9,12 @@ var Dancer = function(top, left, timeBetweenSteps){
 };
 
 Dancer.prototype.step = function(){
-  if(!this.paused){
-    setTimeout(this.step.bind(this), this.timeBetweenSteps);
-  } else {
-    setTimeout(this.step.bind(this), this.timeBetweenSteps);
+
+  if(this.$node.hasClass('queueDelete')) {
+    return;
   }
+
+  setTimeout(this.step.bind(this), this.timeBetweenSteps);
 };
 
 Dancer.prototype.setPosition = function(top, left){
