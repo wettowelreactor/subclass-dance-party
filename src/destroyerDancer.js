@@ -17,7 +17,7 @@ DestroyerDancer.prototype.step = function(){
         left: $('.dancer_img')[0].style.left,
         top: $('.dancer_img')[0].style.top
       },
-      1000,
+      900,
       'swing',
       function(){
         $($('.dancer_img')[0]).stop(true,true).hide('explode', { pieces: 128 } , 1000);
