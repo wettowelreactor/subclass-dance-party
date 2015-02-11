@@ -9,8 +9,6 @@ var Dancer = function(top, left, timeBetweenSteps){
 };
 
 Dancer.prototype.step = function(){
-  // the basic dancer doesn't do anything interesting at all on each step,
-  // it just schedules the next step
   if(!this.paused){
     setTimeout(this.step.bind(this), this.timeBetweenSteps);
   } else {
